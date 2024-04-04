@@ -10,6 +10,7 @@ usernameInput.addEventListener('blur', () => {
             let select = document.getElementById('repository')
             if (data.message === "Not Found") {
                 //TODO: show error message
+                select.innerHTML = buildSelectOptions([]);
                 select.disabled = true;
             } else {
                 select.innerHTML = buildSelectOptions(data);
