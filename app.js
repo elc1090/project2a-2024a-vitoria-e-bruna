@@ -22,6 +22,16 @@ usernameInput.addEventListener('blur', () => {
 
 gitHubForm.addEventListener('submit', (e) => {
     e.preventDefault();
+
+    let username = usernameInput.value;
+    let repository = document.getElementById('repository').value
+
+    requestCommitsFromRepos(username, repository)
+        .then(response => response.json())
+        .then(data => {
+            let list = document.getElementById('commits')
+            list.innerHTML = buildCommits(data);
+        })
 })
 
 function buildSelectOptions(repositories) {
@@ -34,6 +44,22 @@ function buildSelectOptions(repositories) {
     return optionsHTML;
 }
 
+function buildCommits(commits) {
+    let commitsHTML = '';
+
+    for (let commitData of commits) {
+        commitsHTML += `<li class="list-group-item">
+            <p class="h6">${commitData.commit.message}</p>
+            </li>`;
+    }
+
+    return commitsHTML;
+}
+
 function requestUserRepos(username) {
     return Promise.resolve(fetch(`https://api.github.com/users/${username}/repos`));
+}
+
+function requestCommitsFromRepos(username, repository) {
+    return Promise.resolve(fetch(`https://api.github.com/repos/${username}/${repository}/commits`));
 }
