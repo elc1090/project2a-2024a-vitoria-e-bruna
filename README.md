@@ -7,7 +7,7 @@
 > 5. Double-check: Certifique-se de que seu README.md não contenha instruções de entrega!
 > 6. Entregue este README.md dentro da pasta raiz do repositório de entrega. 
 
-![Screenshot do projeto](https://mdswanson.com/static/chops-ux-step-4.png "Screenshot do projeto").
+![Screenshot do projeto!](assets/img.png "Screenshot do projeto").
 
 
 #### Daploy
